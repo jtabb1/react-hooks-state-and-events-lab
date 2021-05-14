@@ -4,9 +4,6 @@ import itemData from "../data/items";
 
 function App() {
   const [items, setItems] = useState(itemData);
-  // console.log(items);
-  console.log(setItems);
-  
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   function handleDarkModeClick() {
