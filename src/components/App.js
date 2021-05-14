@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import ShoppingList from "./ShoppingList";
-import itemData from "../data/items";
+import item1sts from "../data/items";
 
 function App() {
-  const [items, setItems] = useState(itemData);
-  // console.log(items);
-  console.log(setItems);
-  
+  const item2nds = item1sts.map( (item) =>
+  {
+    return {...item, inCart: false};
+  });
+
+  const [items, setItems] = useState(item2nds);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   function handleDarkModeClick() {
@@ -21,7 +23,7 @@ function App() {
           {isDarkMode ? "Dark" : "Light"} Mode
         </button>
       </header>
-      <ShoppingList items={items} />
+      <ShoppingList items={items} setItems={setItems}/>
     </div>
   );
 }

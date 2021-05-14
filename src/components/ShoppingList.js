@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Item from "./Item";
 
-function ShoppingList({ items }) {
+function ShoppingList({ items, setItems }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   function handleCategoryChange(event) {
-    // event.target.value will be the value selected by the user
     setSelectedCategory(event.target.value);
   }
 
-  // we want to filter the items to only display the ones based on the selected category
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
@@ -28,7 +26,9 @@ function ShoppingList({ items }) {
       </div>
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} name={item.name} category={item.category} />
+          <Item key={item.id} name={item.name} category={item.category}
+          inCart={item.inCart} id={item.id} 
+          items={items} setItems={setItems} />
         ))}
       </ul>
     </div>
